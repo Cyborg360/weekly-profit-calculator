@@ -46,23 +46,16 @@ export default function ProfitBox({ props }) {
     e.preventDefault();
     try {
       let weeks = [];
-      let date = new Date();
       let investment = parseFloat(input);
       let startAmount = parseFloat(input);
-      let courseReturn;
       let oneMillion;
-      let courseReturnVerified = false;
 
       while (investment < 1000000) {
         investment = investment * percentage;
         weeks.push(investment);
       }
-      for (let n in weeks) {
-        if (weeks[n] % startAmount >= 999) {
-          courseReturn = await timeConverter(weeks.indexOf(weeks[n]) + 1);
-          break;
-        }
-      }
+      let calcCourseReturn = weeks.findIndex((n) => n - startAmount >= 999);
+      let courseReturn = await timeConverter(calcCourseReturn + 1);
       oneMillion = await timeConverter(weeks.length + 1);
       setOneMillionTime(oneMillion);
       setCourseReturnTime(courseReturn);
