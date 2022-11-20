@@ -68,8 +68,8 @@ export default function ProfitBox({ props }) {
   }
 
   return (
-    <div className="grid px-2 place-content-center h-screen bg-slate-200">
-      <div className="block p-4  max-w-sm bg-white rounded-lg shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700 items-center">
+    <div className="grid px-2 place-content-center h-screen z-20">
+      <div className="block p-4  max-w-sm bg-white rounded-lg shadow-md sm:p-8 items-center z-20">
         <h1 className="mb-4 text-3xl font-medium text-slate-700 dark:text-gray-400">
           Calculadora de crecimiento compuesto
         </h1>
@@ -108,6 +108,7 @@ export default function ProfitBox({ props }) {
                 <option value="1.025">2.5%</option>
                 <option value="1.05">5%</option>
                 <option value="1.075">7.5%</option>
+                <option value="1.1">10%</option>
               </select>
             </div>
             {/* <!-- List --> */}

@@ -7,7 +7,17 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+      },
+      fontSize: {
+        "4xl": ["40px", "48px"],
+      },
+      screens: {
+        "xs": "320px",
+      },
+    },
   },
   plugins: [require("flowbite/plugin")],
 };
