@@ -20,20 +20,12 @@ export default function Calculator() {
 
   async function handleValueChange(e) {
     try {
-      const parsedValue = e.target.value.replace(/[^\d.]/gi, "");
+      const parsedValue = e.target.value === null ? "" : e.target.value.replace(/[^\d.]/gi, "");
       setInput(parsedValue);
     } catch (error) {
       console.log(error);
     }
   }
-
-  const handleOnBlur = () => {
-    try {
-      setInput(Number(input).toFixed(2));
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   async function handleOnclick(e) {
     e.preventDefault();
@@ -53,13 +45,14 @@ export default function Calculator() {
       setMediumPercentageColor("text-[#FFCC00]");
       setLargePercentageColor("bg-[#FFCC00] text-[#543ffc]");
     }
+    if (input !== "") await calculateProfit();
   }
 
   async function calculateProfit() {
     try {
       let weeks = [];
-      let investment = parseFloat(input);
-      let startAmount = parseFloat(input);
+      let investment = parseInt(input);
+      let startAmount = parseInt(input);
       let oneMillion;
 
       while (investment < 1000000) {
@@ -71,7 +64,7 @@ export default function Calculator() {
       oneMillion = await timeConverter(weeks.length + 1);
       setOneMillionTime(oneMillion);
       setCourseReturnTime(courseReturn);
-      setOneYearProfit(await moneyFormat(weeks[51]));
+      setOneYearProfit(await moneyFormat(weeks[51] ? weeks[51] : weeks[weeks.length - 1]));
     } catch (error) {
       console.log(error);
     }
@@ -86,15 +79,12 @@ export default function Calculator() {
               Escoge tu presupuesto de Inversión:
             </div>
             <CurrencyInput
-              allowDecimals
-              decimalSeparator="."
               id="input-currency-field"
               name="input-currency-field-name"
               prefix="$"
               className="shrink text-[55px] text-white focus:ring-0 border-transparent focus:border-transparent font-black placeholder-[#FFFFFF74] placeholder:text-[80px] bg-transparent  w-[100%] mb-[6px] h-[97px] text-center align-middle placeholder:bottom-0"
               value={input}
               onChange={handleValueChange}
-              onBlur={handleOnBlur}
               placeholder="$5,000"
               step={1}
               disableAbbreviations
@@ -133,7 +123,7 @@ export default function Calculator() {
                 <div className="text-[24px] text-center  font-bold lg:w-[380px] w-full leading-[29px] lg:px-0 px-4">
                   Con tu Inversión inicial, el retorno que escogiste y nuestro curso podrás:
                 </div>
-                <div className="flex flex-row w-full  pt-[30px] lg:mb-[40px] mb-[34px] justify-center">
+                <div className="flex flex-row w-full  pt-[30px]  lg:mb-[40px] mb-[34px] justify-center">
                   <img src="/gold-bars.svg" className="" />
                   <div className="ml-[25px] flex flex-col sm:w-[249px] xs:w-[200px] text-left">
                     <div className="text-[18px] text-white font-black leading-[22px]">Generar</div>
@@ -145,8 +135,8 @@ export default function Calculator() {
                 </div>
                 <div className="flex flex-row w-full lg:pl-0  pl-[17px]  lg:mb-[38px] mb-[32px] justify-center">
                   <img src="/return-time.svg" />
-                  <div className="ml-[25px] flex flex-col w-[249px] text-left">
-                    <div className="text-[18px] text-white font-black leading-[22px] w-[209px]">
+                  <div className="ml-[25px] flex flex-col sm:w-[249px] xs:w-[200px] text-left">
+                    <div className="text-[18px] text-white font-black leading-[22px] sm:w-[209px] w-[200px]">
                       Recuperar tu inversión en el curso para
                     </div>
                     <div className="text-[17px] text-[#d4cffe] font-black leading-[22px] mt-[5px]">
@@ -158,9 +148,9 @@ export default function Calculator() {
               <div className="flex flex-col w-full items-center justify-center">
                 <div className="border-[1px] border-white lg:w-[471px] w-[339px]"></div>
               </div>
-              <div className="flex flex-row w-full lg:pl-[83px] pl-[27px] md:pr-[100px] mt-[48px] justify-center">
+              <div className="flex flex-row w-full lg:pl-[83px] pl-[27px] lg:pr-[90px] mt-[48px] justify-center">
                 <img src="/money-plant.svg" className="h-[105px]" />
-                <div className="ml-[37px] flex flex-col w-[230px] text-left lg:mt-[5px] mt-[2px]">
+                <div className="ml-[37px] flex flex-col sm:w-[249px] xs:w-[200px] text-left lg:mt-[5px] mt-[2px]">
                   <div className="text-[16px] text-white font-black leading-[22px] lg:w-full w-[218px]">
                     En un año podrías generar:
                   </div>
@@ -181,6 +171,9 @@ async function moneyFormat(value) {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
+    maximumFractionDigits: 0,
+    minimumFractionDigits: 0,
+    compactDisplay: "long",
   }).format(value);
 }
 
