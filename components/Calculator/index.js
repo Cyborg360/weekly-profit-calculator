@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import CurrencyInput from "react-currency-input-field";
 
-export default function Calculator() {
+export default function Calculator({ setOneYear }) {
   const [input, setInput] = useState("");
   const [percentage, setPercentage] = useState(1.05);
   const [oneMillionTime, setOneMillionTime] = useState("");
@@ -65,6 +65,7 @@ export default function Calculator() {
       setOneMillionTime(oneMillion);
       setCourseReturnTime(courseReturn);
       setOneYearProfit(await moneyFormat(weeks[51] ? weeks[51] : weeks[weeks.length - 1]));
+      setOneYear("profit=" + (await moneyFormat(weeks[51] ? weeks[51] : weeks[weeks.length - 1])));
     } catch (error) {
       console.log(error);
     }
@@ -154,7 +155,10 @@ export default function Calculator() {
                   <div className="text-[16px] text-white font-black leading-[22px] lg:w-full w-[218px]">
                     En un año podrías generar:
                   </div>
-                  <div className="md:text-[45px] text-[32px] text-white font-black md:leading-[72.61px] leading-[34px] lg:w-[288px] w-[135px] lg:mt-0 mt-2">
+                  <div
+                    id="oyp"
+                    className="md:text-[45px] text-[32px] text-white font-black md:leading-[72.61px] leading-[34px] lg:w-[288px] w-[135px] lg:mt-0 mt-2"
+                  >
                     {oneYearProfit}
                   </div>
                 </div>

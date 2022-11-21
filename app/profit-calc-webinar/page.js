@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Calculator from "../components/Calculator";
+import Calculator from "../../components/Calculator";
 
 export default function Page() {
   const [oneYear, setOneYear] = useState("");
@@ -33,7 +33,7 @@ export default function Page() {
               href={`https://infusions.clickfunnels.com/order-forme9yu00z1?${oneYear}`}
               className="h-full w-full flex flex-col font-inter font-black text-[18px] text-[#553EFF] leading-[60px]"
             >
-              ¡Empieza HOY por $999!
+              ¡Empieza HOY!
             </a>
           </div>
         </div>
