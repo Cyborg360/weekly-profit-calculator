@@ -28,7 +28,7 @@ export default function Page() {
           <p className="font-inter font-bold text-[18px]  mt-1 mx-[15px]">
             ¡Aprende a generar ingresos en el Mercado con Trading en la Bolsa desde Cero!
           </p>
-          <div className=" flex-col h-[60px] w-[296px] px-[14px] mt-6 text-center items-center bg-[#FFCC00] rounded-[60px] self-center md:mb-[68px] mb-[81px]">
+          <div className=" flex-col h-[60px] w-[296px] px-[14px] mt-6 text-center items-center bg-[#FFCC00] rounded-[60px] self-center md:mb-[68px] 2xl:mb-[210px] mb-[81px]">
             <a
               href={`https://infusions.clickfunnels.com/order-forme9yu00z1?${oneYear}`}
               className="h-full w-full flex flex-col font-inter font-black text-[18px] text-[#553EFF] leading-[60px]"
