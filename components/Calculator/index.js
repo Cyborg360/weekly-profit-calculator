@@ -59,7 +59,7 @@ export default function Calculator({ setOneYear }) {
         investment = investment * percentage;
         weeks.push(investment);
       }
-      let calcCourseReturn = weeks.findIndex((n) => n - startAmount >= 999);
+      let calcCourseReturn = weeks.findIndex((n) => n - startAmount >= 3999);
       let courseReturn = await timeConverter(calcCourseReturn + 1);
       oneMillion = await timeConverter(weeks.length + 1);
       setOneMillionTime(oneMillion);

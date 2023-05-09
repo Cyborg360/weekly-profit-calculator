@@ -26,11 +26,12 @@ export default function Page() {
           </div>
 
           <p className="font-inter font-bold text-[18px]  mt-1 mx-[15px]">
-            ¡Aprende a generar ingresos en el Mercado con Trading en la Bolsa desde Cero!
+            ¡Aprende a generar ingresos en el Mercado con Trading en la Bolsa desde Cero y Master de Opciones: Modo
+            Incógnito!
           </p>
           <div className=" flex-col lg:h-[80px] h-[60px] lg:w-[320px] w-[296px] px-[18px] mt-6 text-center items-center justify-center bg-[#FFCC00] rounded-[60px] self-center md:mb-[68px] mb-[81px]">
             <a
-              href={`https://infusions.clickfunnels.com/order-forme9yu00z1?${oneYear}`}
+              href={`https://infusions.clickfunnels.com/order-form1683555663576?${oneYear}`}
               className="h-full w-full flex flex-col font-inter font-black lg:text-[24px] text-[18px] text-[#553EFF] lg:leading-[80px] leading-[60px]"
             >
               ¡Empieza HOY!
@@ -41,8 +42,8 @@ export default function Page() {
       <section id="disclaimer" className="bg-[#F5F5F6] relative py-[20px] w-full block mt-0 text-center z-10">
         <div className=" text-center sm:px-4 px-6">
           <p className=" text-[#0C2F52] text-sm font-inter">
-            *Oferta valida solo por Backfriday, del 22 hasta el 30 de noviembre del 2022. Precio final $999 <br />
-            <span className="font-bold">© Copyright 2022 Infusion Investments LLC</span>
+            {/* *Oferta valida solo por Backfriday, del 22 hasta el 30 de noviembre del 2022. Precio final $999 <br /> */}
+            <span className="font-bold">© Copyright 2023 Infusion Investments LLC</span>
           </p>
         </div>
       </section>
